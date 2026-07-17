@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-cream;
+    }
+}
+
+/* ============================================
+   Sakura petal ambient animation (signature element)
+   ============================================ */
+.sakura-container {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.petal {
+    position: absolute;
+    top: -10%;
+    border-radius: 150% 0 150% 0;
+    background: radial-gradient(circle at 30% 30%, #FBD0DF, #F08FB4 70%);
+    opacity: 0.75;
+    animation: sakura-fall linear infinite, sakura-sway ease-in-out infinite;
+}
+
+.petal:nth-child(1)  { left: 5%;  width: 10px; height: 10px; animation-duration: 12s, 4s;   animation-delay: 0s, 0s; }
+.petal:nth-child(2)  { left: 15%; width: 16px; height: 16px; animation-duration: 16s, 5s;   animation-delay: 2s, 0.5s; }
+.petal:nth-child(3)  { left: 25%; width: 12px; height: 12px; animation-duration: 14s, 3.5s; animation-delay: 4s, 1s; }
+.petal:nth-child(4)  { left: 38%; width: 18px; height: 18px; animation-duration: 18s, 6s;   animation-delay: 1s, 0s; }
+.petal:nth-child(5)  { left: 50%; width: 11px; height: 11px; animation-duration: 13s, 4.5s; animation-delay: 3s, 1.5s; }
+.petal:nth-child(6)  { left: 62%; width: 15px; height: 15px; animation-duration: 17s, 5s;   animation-delay: 5s, 0.5s; }
+.petal:nth-child(7)  { left: 74%; width: 13px; height: 13px; animation-duration: 15s, 4s;   animation-delay: 2.5s, 1s; }
+.petal:nth-child(8)  { left: 83%; width: 17px; height: 17px; animation-duration: 19s, 6s;   animation-delay: 0.5s, 0s; }
+.petal:nth-child(9)  { left: 92%; width: 10px; height: 10px; animation-duration: 12s, 3.5s; animation-delay: 6s, 2s; }
+.petal:nth-child(10) { left: 45%; width: 14px; height: 14px; animation-duration: 20s, 5.5s; animation-delay: 7s, 1s; }
+
+@keyframes sakura-fall {
+    to { transform: translateY(110vh); }
+}
+
+@keyframes sakura-sway {
+    0%, 100% { margin-left: 0; }
+    50% { margin-left: 30px; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .petal {
+        animation: none;
+        display: none;
+    }
+}
